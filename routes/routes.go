@@ -22,8 +22,10 @@ func SetupRoutes(router *gin.Engine, db *gorm.DB) {
 	}))
 
 	deepSearchHandler := handlers.NewDeepSearchHandler(db)
+	earningsBigMoneyHandler := handlers.NewEarningsBigMoneyHandler()
 
 	router.GET("/api/v1/deepsearch/analysis", deepSearchHandler.HandleGetAnalysis)
 	router.POST("/api/v1/deepsearch/trigger", deepSearchHandler.HandleTriggerAnalysis)
+	router.GET("/api/v1/earnings/bigmoney", earningsBigMoneyHandler.GetEarningsWithBigMoney)
 
 }
